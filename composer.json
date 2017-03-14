@@ -1,0 +1,35 @@
+{
+  "name": "ergontech/module",
+  "description": "Blank module please change this",
+  "type": "magento-module",
+  "autoload-dev": {
+    "files": [
+      "root/app/Mage.php"
+    ],
+    "psr-0": {
+      "": [
+        "app/code/community",
+        "root/app/code/community",
+        "root/app/code/core",
+        "root/lib"
+      ]
+    }
+  },
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*",
+    "php": "^5.5"
+  },
+  "extra": {
+    "map": [
+      ["ErgonTech_Module.xml", "app/etc/modules/ErgonTech_Module.xml"],
+      ["community/ErgonTech/Module/etc/", "app/code/community/ErgonTech/Module/etc"]
+    ],
+    "magento-root-dir": "root"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.0",
+    "aydin-hassan/magento-core-composer-installer": "^1.4",
+    "magento/core": "^1.9",
+    "magetest/magento-phpunit-extension": "dev-develop"
+  }
+}
