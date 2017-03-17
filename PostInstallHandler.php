@@ -51,10 +51,10 @@ class PostInstallHandler
         $version = $io->askAndValidate('Enter Module Version: [<comment>0.1.0</comment>] ', [static::class, 'validateModuleVersion'], null, '0.1.0');
 
         $filesystem = static::getFilesystem();
-        $filesystem->delete(__DIR__ . '/composer.lock');
-        $filesystem->delete(__DIR__ . '/composer.json');
-        $filesystem->delete(__DIR__ . '/phpunit.xml.dist');
-        $filesystem->delete(__DIR__ . '/ModuleNameException.php');
+        $filesystem->delete('composer.lock');
+        $filesystem->delete('composer.json');
+        $filesystem->delete('phpunit.xml.dist');
+        $filesystem->delete('ModuleNameException.php');
         static::getModuleScaffolder()->generate($moduleName, $isCommunity, true, $version);
     }
 

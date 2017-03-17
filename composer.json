@@ -28,7 +28,7 @@
     "magento-root-dir": "root"
   },
   "scripts": {
-    "post-root-package-install": [
+    "post-create-project-cmd": [
       "ErgonTech\\ModuleGenerator\\PostInstallHandler::promptForModuleInformation"
     ]
   },
