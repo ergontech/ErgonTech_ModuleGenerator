@@ -26,10 +26,21 @@
     ],
     "magento-root-dir": "root"
   },
+  "scripts": {
+    "post-create-project-cmd": [
+      "ErgonTech\\ModuleGenerator\\PostInstallHandler::promptForModuleInformation"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "ErgonTech\\ModuleGenerator\\": ""
+    }
+  },
   "require-dev": {
     "phpunit/phpunit": "^4.0",
     "aydin-hassan/magento-core-composer-installer": "^1.4",
     "magento/core": "^1.9",
-    "magetest/magento-phpunit-extension": "dev-develop"
+    "magetest/magento-phpunit-extension": "dev-develop",
+    "composer/composer": "^1.4"
   }
 }
