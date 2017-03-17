@@ -17,7 +17,8 @@
   },
   "require": {
     "magento-hackathon/magento-composer-installer": "*",
-    "php": "^5.5"
+    "php": "^5.5",
+    "mpw/mage-scaffold": "dev-master"
   },
   "extra": {
     "map": [
@@ -27,7 +28,7 @@
     "magento-root-dir": "root"
   },
   "scripts": {
-    "post-create-project-cmd": [
+    "post-root-package-install": [
       "ErgonTech\\ModuleGenerator\\PostInstallHandler::promptForModuleInformation"
     ]
   },
@@ -42,5 +43,11 @@
     "magento/core": "^1.9",
     "magetest/magento-phpunit-extension": "dev-develop",
     "composer/composer": "^1.4"
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/mattwellss/mage-scaffold.git"
+    }
+  ]
 }
