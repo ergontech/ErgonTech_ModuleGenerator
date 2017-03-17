@@ -13,6 +13,7 @@ use Composer\IO\IOInterface;
 use Composer\IO\NullIO;
 use Composer\Script\Event;
 use ErgonTech\ModuleGenerator\PostInstallHandler;
+use League\Flysystem\Filesystem;
 use Mpw\MageScaffold\ModuleScaffolder;
 
 
@@ -45,7 +46,7 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
 
         $this->io = $this->getMockBuilder(NullIO::class)
             ->setMethods([
-                'ask', 'askConfirmation'
+                'askAndValidate', 'askConfirmation'
             ])
             ->getMock();
 
@@ -61,6 +62,10 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         PostInstallHandler::setModuleScaffolder($this->moduleScaffolder);
+        $filesystem = $this->getMockBuilder(Filesystem::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        PostInstallHandler::setFilesystem($filesystem);
     }
 
     public function testModuleNameValidation()
@@ -81,12 +86,19 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
     {
 
         $this->io->expects(static::any())
-            ->method('ask')
-            ->withConsecutive(['Enter Module Name: '], ['Enter Module Version: [<comment>0.1.0</comment>] ', '0.1.0'])
-            ->willReturnMap([
-                ['Enter Module Name: ', null, 'Asdf_Asdf'],
-                ['Enter Module Version: [<comment>0.1.0</comment>] ', '0.1.0', '0.1.0']
-            ]);
+            ->method('askAndValidate')
+            ->withConsecutive(['Enter Module Name: ', static::isType('callable')], ['Enter Module Version: [<comment>0.1.0</comment>] ', static::isType('callable'), null, '0.1.0'])
+            ->willReturnCallback(function ($prompt, $cb, $attempts, $default) {
+                if (($prompt === 'Enter Module Name: ') && is_callable($cb)) {
+                    return 'Asdf_Asdf';
+                }
+
+                if (($prompt === 'Enter Module Version: [<comment>0.1.0</comment>] ') && is_callable($cb)) {
+                    return '0.1.0';
+                }
+
+                return false;
+            });
 
         $this->io->expects(static::once())
             ->method('askConfirmation')
