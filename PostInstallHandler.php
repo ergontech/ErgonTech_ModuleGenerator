@@ -66,7 +66,7 @@ class PostInstallHandler
             return $moduleName;
         }
 
-        throw new \Exception();
+        throw new ModuleNameException('A valid module name should have the following format: VendorName_ModuleName');
     }
 
     public static function validateModuleVersion($version)
@@ -75,7 +75,7 @@ class PostInstallHandler
             return $version;
         }
 
-        throw new \Exception();
+        throw new VersionValidationException('A valid version must follow version_compare\'s logic: http://php.net/manual/en/function.version-compare.php');
     }
 
     public static function getFilesystem()

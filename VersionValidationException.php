@@ -9,6 +9,6 @@
 namespace ErgonTech\ModuleGenerator;
 
 
-class CodePoolChoiceException extends \Exception
+class VersionValidationException extends \Exception
 {
 }
