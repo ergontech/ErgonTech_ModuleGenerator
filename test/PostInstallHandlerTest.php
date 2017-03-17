@@ -70,13 +70,15 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
 
     public function testModuleNameValidation()
     {
-        static::assertFalse(PostInstallHandler::validateModuleName('asdf'));
+        static::setExpectedException(\Exception::class);
+        PostInstallHandler::validateModuleName('asdf');
         static::assertEquals('Asdf_Asdf', PostInstallHandler::validateModuleName('Asdf_Asdf'));
     }
 
     public function testVersionStringValidation()
     {
-        static::assertFalse(PostInstallHandler::validateModuleVersion('asdf'));
+        static::setExpectedException(\Exception::class);
+        PostInstallHandler::validateModuleVersion('asdf');
         static::assertEquals('0.1.0', PostInstallHandler::validateModuleVersion('0.1.0'));
         static::assertEquals('1.0', PostInstallHandler::validateModuleVersion('1.0'));
         static::assertEquals('1', PostInstallHandler::validateModuleVersion('1'));

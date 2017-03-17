@@ -62,12 +62,20 @@ class PostInstallHandler
 
     public static function validateModuleName($moduleName)
     {
-        return substr_count($moduleName, '_') === 1 ? $moduleName : false;
+        if (substr_count($moduleName, '_') === 1) {
+            return $moduleName;
+        }
+
+        throw new \Exception();
     }
 
     public static function validateModuleVersion($version)
     {
-        return version_compare($version, '0.0.0.0', '>=') ? $version : false;
+        if (version_compare($version, '0.0.0.0', '>=')) {
+            return $version;
+        }
+
+        throw new \Exception();
     }
 
     public static function getFilesystem()
