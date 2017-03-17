@@ -55,7 +55,9 @@ class PostInstallHandler
         $filesystem->delete('composer.json');
         $filesystem->delete('phpunit.xml.dist');
         $filesystem->delete('ModuleNameException.php');
+        $filesystem->delete('test/PostInstallHandlerTest.php');
         static::getModuleScaffolder()->generate($moduleName, $isCommunity, true, $version);
+        $filesystem->delete('PostInstallHandler.php');
     }
 
     public static function validateModuleName($moduleName)
