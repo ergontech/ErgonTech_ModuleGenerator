@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mattwellss/mage-scaffold.git",
-                "reference": "dd31c24a4f51a6de4f7f19fbfea30b9846a1a73e"
+                "reference": "f6b666c593e8a8af87285b8b863435c915963ef3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mattwellss/mage-scaffold/zipball/dd31c24a4f51a6de4f7f19fbfea30b9846a1a73e",
-                "reference": "dd31c24a4f51a6de4f7f19fbfea30b9846a1a73e",
+                "url": "https://api.github.com/repos/mattwellss/mage-scaffold/zipball/f6b666c593e8a8af87285b8b863435c915963ef3",
+                "reference": "f6b666c593e8a8af87285b8b863435c915963ef3",
                 "shasum": ""
             },
             "require": {
@@ -381,7 +381,7 @@
                 "source": "https://github.com/mattwellss/mage-scaffold/tree/master",
                 "issues": "https://github.com/mattwellss/mage-scaffold/issues"
             },
-            "time": "2017-03-17 22:02:38"
+            "time": "2017-03-20 18:48:37"
         },
         {
             "name": "phly/phly-mustache",
