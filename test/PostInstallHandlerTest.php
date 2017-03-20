@@ -14,6 +14,7 @@ use Composer\IO\NullIO;
 use Composer\Script\Event;
 use ErgonTech\ModuleGenerator\PostInstallHandler;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemInterface;
 use Mpw\MageScaffold\ModuleScaffolder;
 
 
@@ -34,6 +35,11 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
      */
     private $moduleScaffolder;
 
+    /**
+     * @var Filesystem|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $filesystem;
+
     protected function setUp()
     {
         parent::setUp();
@@ -46,7 +52,8 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
 
         $this->io = $this->getMockBuilder(NullIO::class)
             ->setMethods([
-                'askAndValidate', 'askConfirmation'
+                'askAndValidate',
+                'askConfirmation'
             ])
             ->getMock();
 
@@ -54,6 +61,9 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
             ->method('getIo')
             ->willReturn($this->io);
 
+    }
+    protected function mocksModuleScaffolder()
+    {
         $this->moduleScaffolder = $this->getMockBuilder(ModuleScaffolder::class)
             ->disableOriginalConstructor()
             ->setMethods([
@@ -62,10 +72,14 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         PostInstallHandler::setModuleScaffolder($this->moduleScaffolder);
-        $filesystem = $this->getMockBuilder(Filesystem::class)
+    }
+
+    protected function mocksFilesystem()
+    {
+        $this->filesystem = $this->getMockBuilder(Filesystem::class)
             ->disableOriginalConstructor()
             ->getMock();
-        PostInstallHandler::setFilesystem($filesystem);
+        PostInstallHandler::setFilesystem($this->filesystem);
     }
 
     public function testModuleNameValidation()
@@ -84,8 +98,34 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('1', PostInstallHandler::validateModuleVersion('1'));
     }
 
+    public function testFilesystemMutation()
+    {
+        static::assertInstanceOf(Filesystem::class, PostInstallHandler::getFilesystem());
+
+        $filesystem = $this->getMockBuilder(Filesystem::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        PostInstallHandler::setFilesystem($filesystem);
+
+        static::assertSame($filesystem, PostInstallHandler::getFilesystem());
+    }
+
+    public function testModuleScaffolderMutation()
+    {
+        $mockModuleScaffolder = $this->getMockBuilder(ModuleScaffolder::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        static::assertInstanceOf(ModuleScaffolder::class, PostInstallHandler::getModuleScaffolder());
+
+        PostInstallHandler::setModuleScaffolder($mockModuleScaffolder);
+        static::assertSame($mockModuleScaffolder, PostInstallHandler::getModuleScaffolder());
+    }
+
     public function testValidInput()
     {
+        $this->mocksFilesystem();
+        $this->mocksModuleScaffolder();
 
         $this->io->expects(static::any())
             ->method('askAndValidate')

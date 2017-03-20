@@ -50,14 +50,12 @@ class PostInstallHandler
         $isCommunity = $io->askConfirmation('Community Code Pool [<comment>yes</comment>]? ', true);
         $version = $io->askAndValidate('Enter Module Version: [<comment>0.1.0</comment>] ', [static::class, 'validateModuleVersion'], null, '0.1.0');
 
+        // Clean up these files
         $filesystem = static::getFilesystem();
-        $filesystem->delete('composer.lock');
-        $filesystem->delete('composer.json');
-        $filesystem->delete('phpunit.xml.dist');
-        $filesystem->delete('ModuleNameException.php');
-        $filesystem->delete('test/PostInstallHandlerTest.php');
+        array_filter(require __DIR__ . '/cleanupfiles.php', [$filesystem, 'delete']);
+        $filesystem->delete(basename(__FILE__)); // THIS WILL SELF-DESTRUCT!
+
         static::getModuleScaffolder()->generate($moduleName, $isCommunity, true, $version);
-        $filesystem->delete('PostInstallHandler.php');
     }
 
     public static function validateModuleName($moduleName)
