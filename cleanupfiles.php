@@ -6,5 +6,6 @@ return [
     'ModuleNameException.php',
     'VersionValidationException.php',
     'test/PostInstallHandlerTest.php',
+    'README.md',
     basename(__FILE__)
 ];
