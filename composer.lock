@@ -114,12 +114,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:ergontech/mage-scaffold.git",
-                "reference": "c4622aa914ed16842cf9f6534536d7c839e9040f"
+                "reference": "44019c24b7809023c38c812310ddb90094d4c6b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergontech/mage-scaffold/zipball/c4622aa914ed16842cf9f6534536d7c839e9040f",
-                "reference": "c4622aa914ed16842cf9f6534536d7c839e9040f",
+                "url": "https://api.github.com/repos/ergontech/mage-scaffold/zipball/44019c24b7809023c38c812310ddb90094d4c6b3",
+                "reference": "44019c24b7809023c38c812310ddb90094d4c6b3",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                 "source": "https://github.com/ergontech/mage-scaffold/tree/master",
                 "issues": "https://github.com/ergontech/mage-scaffold/issues"
             },
-            "time": "2017-03-24 20:55:53"
+            "time": "2017-03-24 21:14:36"
         },
         {
             "name": "justinrainbow/json-schema",
