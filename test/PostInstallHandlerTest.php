@@ -144,7 +144,9 @@ class PostInstallHandlerTest extends \PHPUnit_Framework_TestCase
 
         $this->io->expects(static::once())
             ->method('askConfirmation')
-            ->with('Community Code Pool [<comment>yes</comment>]? ', true)
+            ->withConsecutive(
+                ['Community Code Pool [<comment>yes</comment>]? ', true],
+                ['Include Composer setup? [<comment>yes</comment>]? ', true])
             ->willReturn(true);
 
         $this->moduleScaffolder->expects(static::once())
