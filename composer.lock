@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2530dfb6fd2caaa6db39b2b6490fa4d3",
+    "content-hash": "a30a54498045b29d684b869b4fa54941",
     "packages": [
         {
             "name": "eloquent/composer-config-reader",
@@ -109,6 +109,53 @@
             "time": "2015-11-03T22:21:38+00:00"
         },
         {
+            "name": "ergontech/mage-scaffold",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:ergontech/mage-scaffold.git",
+                "reference": "c4622aa914ed16842cf9f6534536d7c839e9040f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ergontech/mage-scaffold/zipball/c4622aa914ed16842cf9f6534536d7c839e9040f",
+                "reference": "c4622aa914ed16842cf9f6534536d7c839e9040f",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "^1.0",
+                "phly/phly-mustache": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mpw\\MageScaffold\\": "MageScaffold/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Wells",
+                    "email": "ttamsllew@gmail.com"
+                },
+                {
+                    "name": "Matthew Wells",
+                    "email": "matthew@ergon.tech"
+                }
+            ],
+            "description": "Magento 1.x Scaffolding toolkit",
+            "support": {
+                "source": "https://github.com/ergontech/mage-scaffold/tree/master",
+                "issues": "https://github.com/ergontech/mage-scaffold/issues"
+            },
+            "time": "2017-03-24 20:55:53"
+        },
+        {
             "name": "justinrainbow/json-schema",
             "version": "4.1.0",
             "source": {
@@ -176,16 +223,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.35",
+            "version": "1.0.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "dda7f3ab94158a002d9846a97dc18ebfb7acc062"
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dda7f3ab94158a002d9846a97dc18ebfb7acc062",
-                "reference": "dda7f3ab94158a002d9846a97dc18ebfb7acc062",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
                 "shasum": ""
             },
             "require": {
@@ -255,7 +302,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-02-09T11:33:58+00:00"
+            "time": "2017-03-22T15:43:14+00:00"
         },
         {
             "name": "magento-hackathon/magento-composer-installer",
@@ -339,49 +386,6 @@
                 "magento"
             ],
             "time": "2017-02-23T13:23:06+00:00"
-        },
-        {
-            "name": "mpw/mage-scaffold",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mattwellss/mage-scaffold.git",
-                "reference": "f6b666c593e8a8af87285b8b863435c915963ef3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mattwellss/mage-scaffold/zipball/f6b666c593e8a8af87285b8b863435c915963ef3",
-                "reference": "f6b666c593e8a8af87285b8b863435c915963ef3",
-                "shasum": ""
-            },
-            "require": {
-                "league/flysystem": "^1.0",
-                "phly/phly-mustache": "^2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Mpw\\MageScaffold\\": "MageScaffold/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Wells",
-                    "email": "ttamsllew@gmail.com"
-                }
-            ],
-            "description": "Magento 1.x Scaffolding toolkit",
-            "support": {
-                "source": "https://github.com/mattwellss/mage-scaffold/tree/master",
-                "issues": "https://github.com/mattwellss/mage-scaffold/issues"
-            },
-            "time": "2017-03-20 18:48:37"
         },
         {
             "name": "phly/phly-mustache",
@@ -2621,7 +2625,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "mpw/mage-scaffold": 20,
+        "ergontech/mage-scaffold": 20,
         "magetest/magento-phpunit-extension": 20
     },
     "prefer-stable": false,

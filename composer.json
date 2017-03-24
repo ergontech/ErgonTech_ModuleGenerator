@@ -18,7 +18,7 @@
   "require": {
     "magento-hackathon/magento-composer-installer": "*",
     "php": "^5.5",
-    "mpw/mage-scaffold": "dev-master"
+    "ergontech/mage-scaffold": "dev-master"
   },
   "extra": {
     "map": [
@@ -47,7 +47,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/mattwellss/mage-scaffold.git"
+      "url": "https://github.com/ErgonTech/mage-scaffold.git"
     }
   ]
 }

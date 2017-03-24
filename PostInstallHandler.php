@@ -25,7 +25,7 @@ class PostInstallHandler
         if (!isset(static::$moduleScaffolder)) {
             $res = new AggregateResolver();
             $defaultResolver = new DefaultResolver();
-            $defaultResolver->addTemplatePath(__DIR__ . '/vendor/mpw/mage-scaffold/templates');
+            $defaultResolver->addTemplatePath(__DIR__ . '/vendor/ergontech/mage-scaffold/templates');
             $res->attach($defaultResolver);
 
             static::$moduleScaffolder = new \Mpw\MageScaffold\ModuleScaffolder(
