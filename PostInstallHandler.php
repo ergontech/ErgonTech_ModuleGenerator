@@ -5,8 +5,7 @@ namespace ErgonTech\ModuleGenerator;
 use Composer\Script\Event;
 use League\Flysystem\Filesystem;
 use Mpw\MageScaffold\ModuleScaffolder;
-use Phly\Mustache\Resolver\AggregateResolver;
-use Phly\Mustache\Resolver\DefaultResolver;
+use Mpw\MageScaffold\Writer;
 
 class PostInstallHandler
 {
@@ -23,15 +22,7 @@ class PostInstallHandler
     public static function getModuleScaffolder()
     {
         if (!isset(static::$moduleScaffolder)) {
-            $res = new AggregateResolver();
-            $defaultResolver = new DefaultResolver();
-            $defaultResolver->addTemplatePath(__DIR__ . '/vendor/ergontech/mage-scaffold/templates');
-            $res->attach($defaultResolver);
-
-            static::$moduleScaffolder = new \Mpw\MageScaffold\ModuleScaffolder(
-                new \Mpw\MageScaffold\FileScaffolder(
-                    new \Phly\Mustache\Mustache($res),
-                    static::getFilesystem()));
+            static::$moduleScaffolder = new ModuleScaffolder(new Writer(static::getFilesystem()));
         }
 
         return static::$moduleScaffolder;
